@@ -44,6 +44,8 @@ public class Main {
                     Book bookToIssue = library.findBook(issueId);
                     if(bookToIssue != null){
                         bookToIssue.issueBook();
+                    }else{
+                        System.out.println("No book found with ID " + issueId);
                     }
                     break;
 
@@ -53,6 +55,8 @@ public class Main {
                     Book bookToReturn = library.findBook(returnId);
                     if(bookToReturn != null){
                         bookToReturn.returnBook();
+                    }else {
+                        System.out.println("No book found with ID " + returnId);
                     }
                     break;
 

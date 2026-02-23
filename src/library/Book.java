@@ -6,10 +6,9 @@ public class Book {
     private String title;
     private String author;
     private boolean isIssued;
-    private int idCounter = 100;
 
     public Book(int bookId,String title,String author){
-        this.bookId = idCounter++;
+        this.bookId = bookId;
         this.title = title;
         this.author  = author;
         this.isIssued = false;
@@ -23,8 +22,12 @@ public class Book {
         }
     }
     public void returnBook(){
-        isIssued = false;
-        System.out.println("Book returned successfully.");
+        if(isIssued){
+            isIssued = false;
+            System.out.println("Book returned successfully");
+        }else{
+            System.out.println("This book was not issued, cannot return.");
+        }
     }
     public int getBookId(){
         return bookId;
