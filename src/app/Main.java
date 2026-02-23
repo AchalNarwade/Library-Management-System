@@ -1,17 +1,64 @@
 package app;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import library.Book;
+import library.Library;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner sc = new Scanner(System.in);
+        Library library = new Library();
+
+        while(true){
+            System.out.println("\n1. Add Book");
+            System.out.println("2. Show Books");
+            System.out.println("3. Issue Book");
+            System.out.println("4. Return Book");
+            System.out.println("5. Exit");
+
+            int choice = sc.nextInt();
+
+            switch(choice){
+
+                case 1:
+                System.out.println("Enter ID: ");
+                int id = sc.nextInt();
+                sc.nextLine();//Consumes the leftover newline ,Clears the buffer
+                System.out.println("Enter Title: ");
+                String title = sc.nextLine();
+                System.out.println("Enter Author: ");
+                String author = sc.nextLine();
+
+                library.addBook(new Book(id,title,author));
+                break;
+
+                case 2:
+                    library.showAllBooks();
+                    break;
+
+                case 3:
+                    System.out.println("Enter Book ID to issue: ");
+                    int issueId = sc.nextInt();
+                    Book bookToIssue = library.findBook(issueId);
+                    if(bookToIssue != null){
+                        bookToIssue.issueBook();
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Enter Book ID to return ");
+                    int returnId = sc.nextInt();
+                    Book bookToReturn = library.findBook(returnId);
+                    if(bookToReturn != null){
+                        bookToReturn.returnBook();
+                    }
+                    break;
+
+                case 5:
+                    System.exit(0);
+            }
         }
     }
 }
