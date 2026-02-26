@@ -12,8 +12,12 @@ public class Library {
     }
 
     public void showAllBooks(){
-        for(Book b : books){
-            b.displayBook();
+        if(books.isEmpty()){
+            System.out.println("No book available in the library.");
+        }else {
+            for (Book b : books) {
+                b.displayBook();
+            }
         }
     }
 
