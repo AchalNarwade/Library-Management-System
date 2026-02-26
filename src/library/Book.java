@@ -33,6 +33,16 @@ public class Book {
         return bookId;
     }
     public void displayBook(){
-        System.out.println(bookId + " | " + title + " | " + author + " | Issued: " + isIssued);
+        String status;
+        if(isIssued){
+            status = "Issued";
+        }else{
+            status = "Available";
+        }
+        System.out.println(
+                "Book ID : " + bookId +
+                "\nTitle   : " + title +
+                "\nAuthor  : " + author +
+                "\nStatus  : " + status);
     }
 }
