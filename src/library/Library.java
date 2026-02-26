@@ -33,4 +33,8 @@ public class Library {
         }
         return null;
     }
+
+    public int getTotalBooks(){
+        return books.size();
+    }
 }

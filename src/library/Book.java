@@ -40,7 +40,7 @@ public class Book {
             status = "Available";
         }
         System.out.println(
-                "Book ID : " + bookId +
+                "\nBook ID : " + bookId +
                 "\nTitle   : " + title +
                 "\nAuthor  : " + author +
                 "\nStatus  : " + status);

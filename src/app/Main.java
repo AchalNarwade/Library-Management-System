@@ -16,7 +16,8 @@ public class Main {
             System.out.println("2. Show Books");
             System.out.println("3. Issue Book");
             System.out.println("4. Return Book");
-            System.out.println("5. Exit");
+            System.out.println("5. Show total Books");
+            System.out.println("6. Exit");
 
             int choice = sc.nextInt();
 
@@ -61,6 +62,11 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.println("Total books in the library: " + library.getTotalBooks());
+                    break;
+
+
+                case 6:
                     System.exit(0);
             }
         }
