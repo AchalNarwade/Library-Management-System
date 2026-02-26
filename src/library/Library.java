@@ -7,6 +7,10 @@ public class Library {
     private ArrayList<Book> books = new ArrayList<>();
 
     public void addBook(Book book){
+        if(findBook(book.getBookId())!=null){
+            System.out.println("Book with ID: " + book.getBookId() + " already exist! cannot add duplicates");
+            return;
+        }
         books.add(book);
         System.out.println("Book successfully added");
     }
