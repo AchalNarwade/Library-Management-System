@@ -11,7 +11,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Library library = new Library();
 
-        while(true){
+        while(true) {
             System.out.println("\n1. Add Book");
             System.out.println("2. Show Books");
             System.out.println("3. Issue Book");
@@ -19,21 +19,33 @@ public class Main {
             System.out.println("5. Show total Books");
             System.out.println("6. Exit");
 
-            int choice = sc.nextInt();
+            int choice = 0;
+            try {
+                choice = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid Choice");
+                sc.nextLine(); //to clear scanner buffer
+            }
 
-            switch(choice){
+            switch (choice) {
 
                 case 1:
-                System.out.println("Enter ID: ");
-                int id = sc.nextInt();
-                sc.nextLine();//Consumes the leftover newline ,Clears the buffer
-                System.out.println("Enter Title: ");
-                String title = sc.nextLine();
-                System.out.println("Enter Author: ");
-                String author = sc.nextLine();
+                    System.out.println("Enter ID: ");
+                    int id = 0;
+                    try {
+                        id = sc.nextInt();
+                    } catch (Exception e) {
+                        System.out.println("Invalid ID");
+                        sc.nextLine();
+                    }
+                    sc.nextLine();//Consumes the leftover newline ,Clears the buffer
+                    System.out.println("Enter Title: ");
+                    String title = sc.nextLine();
+                    System.out.println("Enter Author: ");
+                    String author = sc.nextLine();
 
-                library.addBook(new Book(id,title,author));
-                break;
+                    library.addBook(new Book(id, title, author));
+                    break;
 
                 case 2:
                     library.showAllBooks();
@@ -43,9 +55,9 @@ public class Main {
                     System.out.println("Enter Book ID to issue: ");
                     int issueId = sc.nextInt();
                     Book bookToIssue = library.findBook(issueId);
-                    if(bookToIssue != null){
+                    if (bookToIssue != null) {
                         bookToIssue.issueBook();
-                    }else{
+                    } else {
                         System.out.println("No book found with ID " + issueId);
                     }
                     break;
@@ -54,9 +66,9 @@ public class Main {
                     System.out.println("Enter Book ID to return ");
                     int returnId = sc.nextInt();
                     Book bookToReturn = library.findBook(returnId);
-                    if(bookToReturn != null){
+                    if (bookToReturn != null) {
                         bookToReturn.returnBook();
-                    }else {
+                    } else {
                         System.out.println("No book found with ID " + returnId);
                     }
                     break;
