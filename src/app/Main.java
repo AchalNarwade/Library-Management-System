@@ -31,12 +31,13 @@ public class Main {
 
                 case 1:
                     System.out.println("Enter ID: ");
-                    int id = 0;
+                    int id ;
                     try {
                         id = sc.nextInt();
                     } catch (Exception e) {
-                        System.out.println("Invalid ID");
+                        System.out.println("Invalid ID.Please enter a number.");
                         sc.nextLine();
+                        break;
                     }
                     sc.nextLine();//Consumes the leftover newline ,Clears the buffer
                     System.out.println("Enter Title: ");
@@ -54,9 +55,17 @@ public class Main {
                 case 3:
                     System.out.println("Enter Book ID to issue: ");
                     int issueId = sc.nextInt();
+                    sc.nextLine();   //consume leftover newline
+
                     Book bookToIssue = library.findBook(issueId);
                     if (bookToIssue != null) {
-                        bookToIssue.issueBook();
+                        if(!bookToIssue.isIssued()){  //check availability
+                            System.out.println("Enter borrower name: ");
+                            String borrower = sc.nextLine();
+                            bookToIssue.issueBook(borrower);
+                        }else {
+                            System.out.println("Book already issued to " + bookToIssue.getBorrowerName());
+                        }
                     } else {
                         System.out.println("No book found with ID " + issueId);
                     }

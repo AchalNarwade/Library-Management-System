@@ -6,6 +6,7 @@ public class Book {
     private String title;
     private String author;
     private boolean isIssued;
+    private String borrowerName;
 
     public Book(int bookId,String title,String author){
         this.bookId = bookId;
@@ -13,18 +14,20 @@ public class Book {
         this.author  = author;
         this.isIssued = false;
     }
-    public void issueBook(){
+    public void issueBook(String borrowerName){
         if(!isIssued){
             isIssued = true;
-            System.out.println("Book Issued successfully!");
+            this.borrowerName = borrowerName;     //set borrower name
+            System.out.println(title + " issued to: " + borrowerName);
         }else{
-            System.out.println("Book already issued.");
+            System.out.println(title + " Book already issued to " + borrowerName);
         }
     }
     public void returnBook(){
         if(isIssued){
             isIssued = false;
-            System.out.println("Book returned successfully");
+            System.out.println(title + " returned successfully from: " + borrowerName);
+            this.borrowerName = null;   //clear borrower name when returned
         }else{
             System.out.println("This book was not issued, cannot return.");
         }
@@ -32,10 +35,18 @@ public class Book {
     public int getBookId(){
         return bookId;
     }
+
+    public boolean isIssued(){
+        return isIssued;
+    }
+
+    public String getBorrowerName(){
+        return borrowerName;
+    }
     public void displayBook(){
         String status;
         if(isIssued){
-            status = "Issued";
+            status = "Issued to: " + borrowerName;
         }else{
             status = "Available";
         }
