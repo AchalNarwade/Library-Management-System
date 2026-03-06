@@ -10,6 +10,8 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Library library = new Library();
+        //when program start immediately load books
+        library.loadBookFromFile();
 
         while(true) {
             System.out.println("\n1. Add Book");
@@ -88,6 +90,8 @@ public class Main {
 
 
                 case 6:
+                    //before existing save the books
+                    library.saveBookToFile();
                     System.exit(0);
             }
         }

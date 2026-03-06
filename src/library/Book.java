@@ -56,4 +56,14 @@ public class Book {
                 "\nAuthor  : " + author +
                 "\nStatus  : " + status);
     }
+    public String getTitle(){
+        return title;
+    }
+
+    public String getAuthor(){
+        return author;
+    }
+    public boolean isIssue(){
+        return isIssued;
+    }
 }
